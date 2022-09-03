@@ -1,13 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import Navbar from "./components/navbar/navbar";
+import Profile from "./components/profile/profile";
+import ListUser from "./components/listUser.js/listUser";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import Preguntas from "./components/profile/preguntas";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Navbar />
+      <div className="container my-4">
+        <Routes>
+          <Route exact path="/" element={<Profile />} />
+          <Route path="/ListUser" element={<ListUser />} />
+          <Route path="/Preguntas" element={<Preguntas />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
